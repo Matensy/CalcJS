@@ -138,3 +138,34 @@ buttons.forEach ((btn) => {
     }
     });
 }); 
+
+window.addEventListener("keydown", (e) => {
+	const value = e.key;
+    
+    if(+value >= 0 || value === ".") {
+		calc.addDigit(value);
+	} else {
+		calc.processOperation(value);
+	}
+
+    if(value == "Backspace") {
+        calc.processOperation("DEL");
+        calc.processEqualsOperation();
+    }
+
+    if(value == "Delete") {
+        calc.processOperation("C");
+        calc.processEqualsOperation();
+    }
+
+    if(value == "Enter") {
+        calc.processOperation("=");
+        calc.processEqualsOperation();
+    }
+
+    if(value == "'") {
+        calc.processOperation("CE");
+        calc.processEqualsOperation();
+    }
+})
+
